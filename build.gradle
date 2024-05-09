@@ -1,0 +1,57 @@
+plugins {
+    // Java support
+    id "java"
+    // Kotlin support
+    id "org.jetbrains.kotlin.jvm" version "1.9.21"
+    id 'org.jetbrains.intellij' version '1.17.3'
+}
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+
+    //noinspection SpellCheckingInspection
+    implementation('cn.hutool:hutool-all:5.3.9')
+
+    implementation('dom4j:dom4j:1.6.1')
+}
+
+intellij {
+    type.set('IC')
+//    version '2020.2'
+//    version 'LATEST-EAP-SNAPSHOT'
+    version.set('2024.1.1')
+    pluginName.set('RestfulTool')
+
+    plugins = ['java', 'properties', 'yaml', 'Kotlin']
+}
+
+publishPlugin {
+    // 发布插件，token在`https://plugins.jetbrains.com/author/me/tokens`申请
+    token.set(System.getenv("IdeaToken"))
+    // channels 'beta'
+//    channels.set('stable')
+}
+
+group 'cn.cloud.auto.restful.tool'
+version '1.4.0'
+patchPluginXml {
+    changeNotes.set("""
+        <ul>
+            <li>Add method navigation to view</li>
+            <li>Add Class file display</li>
+            <li>fix bugs</li>
+        </ul>
+    """)
+}
+
+//编译JAVA文件时采用UTF-8
+//noinspection GroovyAssignabilityCheck
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
