@@ -60,7 +60,7 @@ import java.util.regex.Pattern;
 public class RestDetail extends JPanel {
 
     public static final FileType DEFAULT_FILE_TYPE = JsonEditor.TEXT_FILE_TYPE;
-    private static final int REQUEST_TIMEOUT = 1000 * 10;
+    private static final int REQUEST_TIMEOUT = 3000 * 10;
     private static final String IDENTITY_HEAD = "HEAD";
     private static final String IDENTITY_BODY = "BODY";
     private final Project project;
