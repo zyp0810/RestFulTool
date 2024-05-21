@@ -251,6 +251,17 @@ public class Settings {
                 }
         );
 
+        public static final SettingKey<Integer> REQUEST_TIMEOUT = SettingKey.createInputNumber(
+                Bundle.getString("setting.httpTools.DefaultRequestTimeout"),
+                10000,
+                data -> {
+                    if (data == null) {
+                        return false;
+                    }
+                    return data > 0;
+                }
+        );
+
         public HttpToolOptionForm() {
             super(Bundle.getString("setting.httpTools"), 2);
         }
